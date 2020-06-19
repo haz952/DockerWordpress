@@ -1,2 +1,5 @@
 # Backup
-docker exec mysql:5.7 /usr/bin/mysqldump -u root --password=wordpress DATABASE > backup.sql
+docker exec root_db_1 /usr/bin/mysqldump -u wordpress --password=wordpress wordpress > backup.sql
+
+# Restore
+# cat backup.sql | docker exec -i root_db_1 /usr/bin/mysql -u wordpress --password=wordpress wordpress
