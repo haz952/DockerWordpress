@@ -13,7 +13,7 @@ Nous allons commencer par créer un fichier yaml : docker-compose.yml
 
 version: '3.3'  # Il s'agit de la version utilisé pour docker-compose
 
-#MYSQL
+MYSQL
 
 services:
     db:
