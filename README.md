@@ -79,5 +79,28 @@ volumes:
 
 # Sauvegarde Base de donnée mysql :
 
+Nous allons, ici, sauvegarder la base de donnée MYSQL a l'aide d'un script et d'une cron pour l'automatisation.
 
+Il faut, premièrement, créer un script de ce type : nomdufichier.sh
 
+Il s'agit d'un fichier qui devra s'éxécuter, donc il doit être éxécutable : chmod u+x nomdufichier.sh
+
+Dans ce fichier, ajouter cette commande en modifiant les champs en MAJ : 
+
+# Backup
+docker exec NOMDUCONTAINER /usr/bin/mysqldump -u USER --password=MOTDEPASSE DATABASE > backup.sql
+
+# Restore
+cat backup.sql | docker exec -i NOMDUCONTAINER /usr/bin/mysql -u USER --password=MOTDEPASSE DATABASE
+
+Enfin, il faut configurer la cron pour éxécuter ce script automatiquement
+
+Installer le service cron sur votre machine : apt-get install cron
+
+puis modifier le fichier /etc/crontab
+
+Ajouter une ligne à la fin du fichier qui va éxécuter ici le script toutes les minutes : 
+
+*/1 * * * * root /root/mysqldump.sh
+
+Pour vérifier que cela fonctionne, vérifiez qu'un fichier backup.sql s'est crée et que le contenu de la base sql y soit :)
