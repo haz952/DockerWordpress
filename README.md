@@ -87,10 +87,10 @@ Il s'agit d'un fichier qui devra s'éxécuter, donc il doit être éxécutable :
 
 Dans ce fichier, ajouter cette commande en modifiant les champs en MAJ : 
 
-- # Backup
+Backup
 docker exec NOMDUCONTAINER /usr/bin/mysqldump -u USER --password=MOTDEPASSE DATABASE > backup.sql
 
-- # Restore
+Restore
 cat backup.sql | docker exec -i NOMDUCONTAINER /usr/bin/mysql -u USER --password=MOTDEPASSE DATABASE
 
 Enfin, il faut configurer la cron pour éxécuter ce script automatiquement
