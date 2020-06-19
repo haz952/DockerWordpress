@@ -13,21 +13,21 @@ Nous allons commencer par créer un fichier yaml : docker-compose.yml
 
 version: '3.3'  # Il s'agit de la version utilisé pour docker-compose
 
-MYSQL
+#MYSQL
 
-services:
-    db:
-        image: mysql:5.7
-        ports:
-            - "3306:3306"
-        volumes:
-            - db_data:/var/lib/mysql
-        restart: always
-        environment:
-            MYSQL_ROOT_PASSWORD: wordpress
-            MYSQL_DATABASE: wordpress
-            MYSQL_USER: wordpress
-            MYSQL_PASSWORD: wordpress
+    services:
+        db:
+            image: mysql:5.7
+            ports:
+                - "3306:3306"
+            volumes:
+                - db_data:/var/lib/mysql
+            restart: always
+            environment:
+                MYSQL_ROOT_PASSWORD: wordpress
+                MYSQL_DATABASE: wordpress
+                MYSQL_USER: wordpress
+                MYSQL_PASSWORD: wordpress
             
  #WORDPRESS
             
